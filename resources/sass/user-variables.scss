@@ -1,0 +1,36 @@
+$transition-time: .2s;
+$transition-time-fast: .1s;
+$transition-time-slow: .4s;
+
+.card-columns {
+    column-count: 5;
+}
+
+// pagination
+.page-item {
+	&:first-child {
+		.page-link > .rounded {
+			margin-left: 0;
+			border-radius: .25rem;
+		}
+	}
+	&:nth-child(2) {
+		.page-link {
+			border-top-left-radius: .25rem;
+      		border-bottom-left-radius: .25rem;
+    	}
+  	}
+	&:last-child {
+		.page-link > .rounded {
+			border-radius: .25rem;
+		}
+	}
+	&:nth-last-child(2) {
+    	.page-link {
+      		border-top-right-radius: .25rem;
+      		border-bottom-right-radius: .25rem;
+    	}
+  	}
+}
+
+//

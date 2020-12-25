@@ -1,0 +1,143 @@
+// 
+// 
+// user.scss
+//
+// Place your own custom CSS or SCSS rules below this line, these rules will override any Bootstrap and theme variables.
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+@media (min-width: 576px) { 
+  .image-gallery {
+    -webkit-column-gap: 6px;
+    column-gap: 6px;
+    -webkit-column-count: 3;
+    column-count: 3;
+  }
+}
+
+
+@media (min-width: 768px) { 
+  .image-gallery {
+    -webkit-column-gap: 6px;
+    column-gap: 6px;
+    -webkit-column-count: 4;
+    column-count: 3;
+  }
+}
+
+
+@media (min-width: 992px) { 
+  .image-gallery {
+    -webkit-column-gap: 6px;
+    column-gap: 6px;
+    -webkit-column-count: 4;
+    column-count: 4;
+  }
+}
+
+
+@media (min-width: 1200px) {
+  .image-gallery {
+    -webkit-column-gap: 6px;
+    column-gap: 6px;
+    -webkit-column-count: 5;
+    column-count: 5;
+  }
+}
+
+.img-c {
+  position: relative;
+}
+
+.img-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.img-overlay:before {
+  content: ' ';
+  display: block;
+  /* adjust 'height' to position overlay content vertically */
+  height: 50%;
+}
+
+.relative {
+    position: relative;
+}
+
+.badge-corner:empty {
+    display: inline-block;
+}
+
+.badge-corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 66px solid #070707b0;
+  border-left: 66px solid transparent;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.badge-corner span {
+  position: absolute;
+  top: -56px;
+  left: -28px;
+  font-size: 17px;
+  color: white;
+}
+
+.badge-corner object {
+  position: absolute;
+  top: -60px;
+  left: -28px;
+  font-size: 18px;
+  color: white;
+}
+
+.badge-corner button {
+    position: absolute;
+    top: -5px;
+    left: -17px;
+    font-size: 18px;
+    color: white;
+}
+
+.badge-corner-base {
+    border-top-color: #3498db;
+}
+.badge-corner-alt {
+    border-top-color: #9cd70e;
+}
+.badge-corner-light {
+    border-top-color: #ecf0f1;
+}
+.badge-corner-light span {
+    color: #2c3e50;
+}
+.badge-corner-dark {
+    border-top-color: #131313;
+}
+.badge-corner-orange {
+    border-top-color: #ff8a3c;
+}
+
+.plyr {
+  height: 100%;
+}
+
+.plyr__video-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
