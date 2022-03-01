@@ -16,9 +16,13 @@ mix.js('resources/js/app.js', 'public/js')
         require("tailwindcss"),
     ])
     .extract([
-        'alpinejs'
+        'alpinejs',
+        '@fancyapps/fancybox',
+        'plyr',
     ])
     .sourceMaps();
+
+mix.js('resources/js/scripts.js', 'public/js').sourceMaps();
 
 if (mix.inProduction()) {
     mix.version();

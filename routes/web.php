@@ -27,9 +27,6 @@ Route::group(['middleware' => 'tumblr'], function () {
     Route::get('/post/{blog}/{id}/{slug?}', [HomeController::class, 'show'])
         ->name('post');
 
-    Route::get('/tagged/{tag}', [HomeController::class, 'search'])
-        ->name('tag');
-
     Route::get('/create', [UserController::class, 'createPost'])
         ->name('create');
 
@@ -44,6 +41,9 @@ Route::group(['middleware' => 'tumblr'], function () {
 
     Route::get('/blog/{blogUrl}/unfollow', [UserController::class, 'unfollow'])
         ->name('unfollow');
+
+    Route::get('/blog/{blogUrl}/tagged/{tag}', [UserController::class, 'tagged'])
+        ->name('tagged');
 
     Route::post('/reblog', [UserController::class, 'reblog'])
         ->name('reblog');

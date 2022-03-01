@@ -49,8 +49,8 @@ class HomeController extends Controller
                     }
                     break;
                 case 'video':
-                    $dom                 = $this->document->loadHtml(last($value->player)->embed_code);
-                    $video               = $dom->find('video');
+                    $dom   = $this->document->loadHtml(last($value->player)->embed_code);
+                    $video = $dom->find('video');
                     if (count($video)) {
                         $value->video_height = $video[0]->getAttribute('height');
                         $value->video_width  = $video[0]->getAttribute('width');

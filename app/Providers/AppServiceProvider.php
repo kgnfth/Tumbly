@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Contracts\View\View;
-use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Tumblr\API\Client;
 
@@ -38,8 +37,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app['request']->server->set('HTTPS', 'on');
-
-        Paginator::useBootstrap();
 
         view()->composer('*', function (View $view) {
             $client = new Client(

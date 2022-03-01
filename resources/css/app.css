@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import '~plyr/dist/plyr.css';
+
+@import '~@fancyapps/fancybox/dist/jquery.fancybox.min.css';
+
+.plyr {
+    height: 100%;
+  }
+  
+  .plyr__video-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
