@@ -149,14 +149,14 @@
 				<div class="mb-3 prose prose-purple prose-slate">
 					{!! $post->caption !!}
 				</div>
-				@isset($post->tags)
+				@if(!empty($post->tags))
 				<p>
 					Tags:
 					@foreach ($post->tags as $tag)
 					<a href="{{ route('tagged', ['blogUrl' => $post->blog_name, 'tag' => $tag ])}}" class="inline-block mr-2 leading-8 text-gray-500 no-underline hover:text-gray-700">#{{ $tag }}</a>
 					@endforeach
 				</p>		
-				@endisset
+				@endif
 			</div>
 			@endif
 			<div class="pt-4 pb-4 pl-4 pr-6 border-t border-b border-gray-200 sm:pl-6 lg:pl-8 xl:pl-6 xl:pt-6 xl:border-t-0">
