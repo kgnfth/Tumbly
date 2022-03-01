@@ -36,6 +36,9 @@ Route::group(['middleware' => 'tumblr'], function () {
     Route::get('/blog/{blogUrl}', [UserController::class, 'blog'])
         ->name('blog');
 
+    Route::get('/blog/{blogUrl}/likes', [UserController::class, 'getBlogLikes'])
+        ->name('getBlogLikes');
+
     Route::get('/blog/{blogUrl}/follow/', [UserController::class, 'follow'])
         ->name('follow');
 

@@ -16,6 +16,10 @@
 				@else
 				<a href="{{ route('follow', ['blogUrl' => $blogInfo->blog->name]) }}" class="flex flex-col items-center px-3 py-2 mt-6 space-y-3 text-sm font-medium leading-4 text-white bg-purple-600 border border-transparent rounded-md shadow-sm justify-stretch sm:flex-row sm:space-y-0 sm:space-x-4 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"><i class="fad fa-user-plus"></i> Follow</a>
 				@endif
+
+				@if ($blog->share_likes == true)
+				<a href="{{ route('getBlogLikes', ['blogUrl' => $blog->name]) }}" class="flex flex-col items-center px-3 py-2 mt-6 space-y-3 text-sm font-medium leading-4 text-white bg-teal-600 border border-transparent rounded-md shadow-sm justify-stretch sm:flex-row sm:space-y-0 sm:space-x-4 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"><i class="fad fa-heart"></i> View user likes</a>
+				@endif
 			  </div>
 		</div>
 		<div class="flex-1 min-w-0 mt-6 sm:block">
