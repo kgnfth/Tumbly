@@ -11,10 +11,10 @@
 				<img class="w-24 h-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32" src="{{ getBlogAvatar($blog->name) }}">
 			</div>
 			  <div class="mt-6 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
-				@if($blogInfo->blog->followed == true)
-				<a href="{{ route('unfollow', ['blogUrl' => $blogInfo->blog->name]) }}" class="flex flex-col items-center px-3 py-2 mt-6 space-y-3 text-sm font-medium leading-4 text-white bg-red-600 border border-transparent rounded-md shadow-sm justify-stretch sm:flex-row sm:space-y-0 sm:space-x-4 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"><i class="fad fa-user-times"></i> Unfollow</a>
+				@if($blog->followed == true)
+				<a href="{{ route('unfollow', ['blogUrl' => $blog->name]) }}" class="flex flex-col items-center px-3 py-2 mt-6 space-y-3 text-sm font-medium leading-4 text-white bg-red-600 border border-transparent rounded-md shadow-sm justify-stretch sm:flex-row sm:space-y-0 sm:space-x-4 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"><i class="fad fa-user-times"></i> Unfollow</a>
 				@else
-				<a href="{{ route('follow', ['blogUrl' => $blogInfo->blog->name]) }}" class="flex flex-col items-center px-3 py-2 mt-6 space-y-3 text-sm font-medium leading-4 text-white bg-purple-600 border border-transparent rounded-md shadow-sm justify-stretch sm:flex-row sm:space-y-0 sm:space-x-4 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"><i class="fad fa-user-plus"></i> Follow</a>
+				<a href="{{ route('follow', ['blogUrl' => $blog->name]) }}" class="flex flex-col items-center px-3 py-2 mt-6 space-y-3 text-sm font-medium leading-4 text-white bg-purple-600 border border-transparent rounded-md shadow-sm justify-stretch sm:flex-row sm:space-y-0 sm:space-x-4 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"><i class="fad fa-user-plus"></i> Follow</a>
 				@endif
 
 				@if ($blog->share_likes == true)

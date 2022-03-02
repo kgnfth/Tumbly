@@ -112,9 +112,7 @@ class UserController extends Controller
 
             $blog = $result->blog;
 
-            $blogInfo = $this->client->getBlogInfo($blogName);
-
-            return view('blog.index', compact('blog', 'posts', 'blogInfo'));
+            return view('blog.index', compact('blog', 'posts'));
         } catch (Exception $e) {
             if ($e->getCode() == 404) {
                 return view('error.404');
@@ -223,9 +221,7 @@ class UserController extends Controller
 
         $blog = $result->blog;
 
-        $blogInfo = $this->client->getBlogInfo($blogName);
-
-        return view('blog.index', compact('blog', 'posts', 'blogInfo'));
+        return view('blog.index', compact('blog', 'posts'));
     }
 
     /**
