@@ -55,10 +55,18 @@
 						@isset($post->gallery)
 						@if($post->gallery == true)
 							<div class="absolute top-0 right-0 flex items-center justify-center w-0 h-0 p-0 rounded-none opacity-70 border-t-66 border-l-66 border-t-current border-l-transparent">
-								<a id="{{ $post->id }}" href="javascript:void(0);" class="absolute text-light" style="top: -60px; left: -32px;">
+								<a data-fancybox="{{ $post->id }}" data-thumb="{{ $post->src }}" href="{{ $post->src }}" class="absolute cursor-zoom-in text-light" style="top: -60px; left: -32px;">
 									<x-heroicon-s-photograph class="w-6 h-6 text-white"/>
 								</a>
-							  </div>
+							</div>
+	
+							<div class="hidden">
+								@foreach ($post->pics as $photo)
+								<a data-fancybox="{{ $post->id }}" href="{{ $photo }}" >
+								  <img class="rounded" src="{{ $photo }}" />
+								</a>
+								@endforeach
+							</div>
 						@endif
 						@endisset				
 					</div>	
@@ -76,7 +84,7 @@
 						</div>
 						@isset($post->video_url)
 						<div class="absolute top-0 right-0 flex items-center justify-center w-0 h-0 p-0 rounded-none opacity-70 border-t-66 border-l-66 border-t-current border-l-transparent">
-							<a data-fancybox href="{{ $post->video_url }}" class="absolute text-light" style="top: -60px; left: -32px;">
+							<a data-fancybox-plyr href="{{ $post->video_url }}" data-thumb="{{ $post->video_poster }}" class="absolute text-light" style="top: -60px; left: -32px;">
 								<x-heroicon-s-play class="w-6 h-6 text-white"/>
 							</a>
 						</div>
@@ -94,30 +102,36 @@
 </main>
 @endsection
 
-
 @section('footer')
-	<script type="text/javascript">
-		@foreach($posts as $post)
-			@if($post->type == 'photo')
-				@isset($post->gallery)
-					@if($post->gallery == true)
-						$('#{{ $post->id }}').on('click', function() {
-							$.fancybox.open([
-								@if(!empty($post->pics))
-								@foreach($post->pics as $photo)
-								{
-									src: '{{ $photo }}',
-									opts : {
-										thumb   : '{{ $photo }}'
-									}
-								},
-								@endforeach
-								@endif
-							])
-						});
-					@endif
-				@endisset
-			@endif
-		@endforeach
-	</script>
+<script type="text/javascript">
+	@foreach($posts as $post)
+		@if($post->type == 'photo')
+			@isset($post->gallery)
+				@if($post->gallery == true)
+				Fancybox.bind(`[data-fancybox="{{ $post->id }}"]`, {
+				dragToClose: false,
+				closeButton: "top",
+				on: {
+					initCarousel: (fancybox) => {
+					const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+				
+					fancybox.$container.style.setProperty(
+						"--bg-image",
+						`url("${slide.thumb}")`
+					);
+					},
+					"Carousel.change": (fancybox, carousel, to, from) => {
+					const slide = carousel.slides[to];
+					fancybox.$container.style.setProperty(
+						"--bg-image",
+						`url("${slide.thumb}")`
+					);
+					},
+				},
+				});
+				@endif
+			@endisset
+		@endif
+	@endforeach
+</script>
 @endsection

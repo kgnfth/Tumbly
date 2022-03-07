@@ -86,16 +86,16 @@
 				<div class="space-y-2 sm:columns-2 md:columns-3 gap-y-6">
 					@foreach($post->photos as $photo)
 					<div class="card">
-						<a data-fancybox="images" href="{{ $photo->original_size->url }}" data-width="{{ $photo->original_size->width }}" data-height="{{ $photo->original_size->height }}">
-							<img class="card-img" src="{{ $photo->original_size->url }}" />
+						<a data-fancybox="gallery" href="{{ $photo->original_size->url }}" data-width="{{ $photo->original_size->width }}" data-height="{{ $photo->original_size->height }}">
+							<img class="cursor-zoom-in" src="{{ $photo->original_size->url }}" />
 						</a>
 					</div>
 					@endforeach
 				</div>
 				@else
 				@foreach($post->photos as $photo)
-					<a data-fancybox="images" href="{{ $photo->original_size->url }}" data-width="{{ $photo->original_size->width }}" data-height="{{ $photo->original_size->height }}">
-						<img class="card-img" src="{{ $photo->original_size->url }}" />
+					<a data-fancybox href="{{ $photo->original_size->url }}" data-width="{{ $photo->original_size->width }}" data-height="{{ $photo->original_size->height }}">
+						<img class="cursor-zoom-in" src="{{ $photo->original_size->url }}" />
 					</a>
 				@endforeach
 				@endif
@@ -105,16 +105,16 @@
 				<div class="space-y-2 sm:columns-2 md:columns-3 gap-y-6">
 					@foreach($post->photos as $photo)
 					<div class="card">
-							<a data-fancybox="images" href="{{ $photo->original_size->url }}" data-width="{{ $photo->original_size->width }}" data-height="{{ $photo->original_size->height }}">
-								<img class="card-img" src="{{ $photo->original_size->url }}" />
+							<a data-fancybox="gallery" href="{{ $photo->original_size->url }}" data-width="{{ $photo->original_size->width }}" data-height="{{ $photo->original_size->height }}">
+								<img class="cursor-zoom-in" src="{{ $photo->original_size->url }}" />
 							</a>
 					</div>
 					@endforeach
 				</div>
 				@else
 					@foreach($post->photos as $photo)
-						<a data-fancybox="images" href="{{ $photo->original_size->url }}" data-width="{{ $photo->original_size->width }}" data-height="{{ $photo->original_size->height }}">
-							<img class="card-img" src="{{ $photo->original_size->url }}" />
+						<a data-fancybox href="{{ $photo->original_size->url }}" data-width="{{ $photo->original_size->width }}" data-height="{{ $photo->original_size->height }}">
+							<img class="cursor-zoom-in" src="{{ $photo->original_size->url }}" />
 						</a>
 					@endforeach
 				@endif
@@ -270,21 +270,30 @@
 
 @section('footer')
 	<script type="text/javascript">
-		$('[data-fancybox="images"]').fancybox({
-			thumbs : {
-				autoStart : true
-			},
-			buttons: [
-				"zoom",
-				"share",
-				"slideShow",
-				"fullScreen",
-				"download",
-				"thumbs",
-				"close"
-			],
-			animationEffect: "zoom",
-			transitionEffect: "slide"
-		});
+Fancybox.bind('[data-fancybox="gallery"]', {
+  dragToClose: false,
+
+  closeButton: "top",
+
+
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
 	</script>
 @endsection
