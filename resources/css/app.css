@@ -6,6 +6,11 @@
 
 @import "~@fancyapps/ui/dist/fancybox.css";
 
+:root {
+  --plyr-range-thumb-height: 13px;
+  --plyr-range-track-height: 10px
+}
+
 body.is-using-mouse .fancybox__content .plyr :focus {
   outline: none;
 }
